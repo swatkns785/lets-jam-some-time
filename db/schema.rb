@@ -11,16 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112162729) do
+ActiveRecord::Schema.define(version: 20150112194554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string  "nickname",      null: false
-    t.string  "permalink",     null: false
-    t.string  "avatar_url",    null: false
-    t.integer "soundcloud_id", null: false
+    t.string   "nickname",      null: false
+    t.string   "permalink",     null: false
+    t.string   "avatar_url",    null: false
+    t.integer  "soundcloud_id", null: false
+    t.string   "provider",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "token",         null: false
   end
 
 end
