@@ -17,3 +17,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
 end
+
+ruby "2.0.0"
