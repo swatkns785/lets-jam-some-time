@@ -17,3 +17,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
 end
+
+group :test do
+  gem 'coveralls', require: false
+end
