@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :jamsessions
 
-  resources :jamsessions, only: :show do
+  resources :jamsessions, only: [:show, :create] do
     resources :attendees, only: [:create]
   end
 

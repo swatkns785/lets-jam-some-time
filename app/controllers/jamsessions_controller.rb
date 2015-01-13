@@ -7,6 +7,7 @@ class JamsessionsController < ApplicationController
 
   def show
     @jamsession = Jamsession.find(params[:id])
+    @approved_attendee = Attendee.find_by(user_id: current_user.id, jamsession_id: params[:id], approval: true)
     @attendee = Attendee.new
   end
 
@@ -19,6 +20,8 @@ class JamsessionsController < ApplicationController
     @jamsession.user = current_user
 
     if @jamsession.save
+      @creator_attendee = Attendee.new(user_id: current_user.id, jamsession_id: Jamsession.last.id, approval: true)
+      @creator_attendee.save
       flash[:notice] = "Your jam session has been successfully created."
       redirect_to jamsession_path(@jamsession)
     else

@@ -1,9 +1,11 @@
 <p>Title: <%= @jamsession.title %></p>
-<p>Where: <%= @jamsession.location %></p>
-<p>What: <%= @jamsession.description %></p>
-<p>When: <%= @jamsession.date %></p>
-<p>Present Instruments: <%= @jamsession.present_instrument %></p>
-<p>Desired Instruments: <%= @jamsession.desired_instruments %></p>
+<% if @jamsession.user == current_user %>
+  <p>Where: <%= @jamsession.location %></p>
+<% end %>
+  <p>What: <%= @jamsession.description %></p>
+  <p>When: <%= @jamsession.date %></p>
+  <p>Present Instruments: <%= @jamsession.present_instrument %></p>
+  <p>Desired Instruments: <%= @jamsession.desired_instruments %></p>
 
 <% if @jamsession.user_id == current_user.id %>
   <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>

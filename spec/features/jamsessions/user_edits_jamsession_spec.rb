@@ -53,10 +53,7 @@ feature "a user edits a jamsession", %q(
     jam = FactoryGirl.create(:jamsession, user_id: user.id)
     user2 = FactoryGirl.create(:user)
 
-    sign_in_as(user)
     create_jamsession(jam)
-
-    click_link "Sign Out"
 
     sign_in_as(user2)
 

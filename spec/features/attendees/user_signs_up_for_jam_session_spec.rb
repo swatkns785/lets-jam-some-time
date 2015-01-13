@@ -7,8 +7,9 @@ feature "a user requests to sign up for a jam session", %q(
   So that I can perhaps play with musicians
 
   Acceptance Criteria
-  [ ] I must be able to sign up for the jam session from the jam session page
-  [ ] Once I request to sign up, I am notified at my successful attempt to sign up
+  [x] I must be able to sign up for the jam session from the jam session page
+  [x] Once I request to sign up, I am notified at my successful attempt to sign up
+  [x] I must not be able to see the exact location of the jam session (city and state OK)
 
 ) do
 
@@ -25,6 +26,7 @@ feature "a user requests to sign up for a jam session", %q(
     click_link "Join this Jam Session"
 
     expect(page).to have_content "You have successfully requested to join this jam session. Stand by for e-mail confirmation from #{jam.user.nickname}."
+    expect(page).to_not have_content jam.location
 
   end
 
