@@ -5,9 +5,6 @@
 <p>Present Instruments: <%= @jamsession.present_instrument %></p>
 <p>Desired Instruments: <%= @jamsession.desired_instruments %></p>
 
-
-location "123 Main Street, Allston, MA 02135"
-description "This is a jam session where we will get funky."
-sequence(:date) { |n| Date.today + n.months }
-present_instrument "Bassoon"
-desired_instruments "Oboe, clarinet, tuba"
+<% if @jamsession.user_id == current_user.id %>
+<p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
+<% end %>

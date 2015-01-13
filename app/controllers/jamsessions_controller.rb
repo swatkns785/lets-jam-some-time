@@ -1,11 +1,11 @@
 class JamsessionsController < ApplicationController
 
-  def new
-    @jamsession = Jamsession.new
-  end
-
   def show
     @jamsession = Jamsession.find(params[:id])
+  end
+
+  def new
+    @jamsession = Jamsession.new
   end
 
   def create
@@ -17,6 +17,21 @@ class JamsessionsController < ApplicationController
       redirect_to jamsession_path(@jamsession)
     else
       render :new
+    end
+  end
+
+  def edit
+    @jamsession = Jamsession.find(params[:id])
+  end
+
+  def update
+    @jamsession = Jamsession.find(params[:id])
+
+    if @jamsession.update(jamsession_params)
+      flash[:notice] = "Your jam session has been successfully updated."
+      redirect_to jamsession_path(@jamsession)
+    else
+      render :edit
     end
   end
 
