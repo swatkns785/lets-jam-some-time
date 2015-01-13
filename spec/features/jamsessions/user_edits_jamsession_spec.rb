@@ -10,6 +10,7 @@ Acceptance Criteria
 [x] I must be able to edit the title, time, location, and description
 [x] Upon successfully editing a jamsession, I must see an message indicating success
 [ ] If I make errors, I am prompted with the appropriate error messages
+[x] I must not be able to edit someone else's jamsession
 
 ) do
 
@@ -43,6 +44,24 @@ Acceptance Criteria
     expect(page).to have_content "Electric bass"
     expect(page).to have_content "Guitar, drums x5, James Brown impersonator"
     expect(page).to_not have_content jam.title
+
+  end
+
+  scenario "user cannot edit someone else's playlist" do
+
+    user = FactoryGirl.create(:user)
+    jam = FactoryGirl.create(:jamsession, user_id: user.id)
+    user2 = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+    create_jamsession(jam)
+
+    click_link "Sign Out"
+
+    sign_in_as(user2)
+
+    visit jamsession_path(jam.id)
+    expect(page).to_not have_content "Edit this Jam Session"
 
   end
 

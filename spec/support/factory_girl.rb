@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :user do
     provider "soundcloud"
     sequence(:nickname) { |n| "bunk_moreland |n|" }
-    soundcloud_id 100001
+    sequence(:soundcloud_id) { |n| 10000 + n }
     permalink "http://www.bunkmoreland.com"
     avatar_url "http://img2.wikia.nocookie.net/__cb20130808014300/p__/protagonist/images/1/19/Bunk.jpg"
   end
