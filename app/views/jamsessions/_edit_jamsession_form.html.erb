@@ -1,0 +1,37 @@
+<%= form_for @jamsession do |f| %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :date %>
+    <%= f.datetime_select :date, ampm: true, start_year: Date.today.year %>
+  </div>
+
+  <div>
+    <%= f.label :present_instrument %>
+    <%= f.text_field :present_instrument %>
+  </div>
+
+  <div>
+    <%= f.label :desired_instruments %>
+    <%= f.text_field :desired_instruments %>
+  </div>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+
+<% end %>

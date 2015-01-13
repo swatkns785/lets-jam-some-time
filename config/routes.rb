@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'auth/failure', to: "sessions#failure"
 
   resources :users, only: [:show]
-  resources :jamsessions, only: [:new, :create, :show]
+  resources :jamsessions, only: [:new, :create, :show, :edit, :update]
 
 end
