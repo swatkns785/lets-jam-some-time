@@ -43,7 +43,23 @@ feature "user creates jamsession", %q(
     expect(page).to have_content "2015-01-31 16:20:00 UTC"
     expect(page).to have_content jam.present_instrument
     expect(page).to have_content jam.desired_instruments
-    expect(page).to have_content jam.user.nickname
+    expect(page).to have_content user.nickname
+
+  end
+
+  scenario "user leaves all fields blank when creating jam session" do
+
+    user = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+
+    visit new_jamsession_path
+
+    click_button "Create"
+
+    expect(page).to have_content "Title can't be blank"
+    expect(page).to have_content "Location can't be blank"
+    expect(page).to have_content "Description can't be blank"
 
   end
 

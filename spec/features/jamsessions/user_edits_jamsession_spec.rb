@@ -2,15 +2,15 @@ require "rails_helper"
 
 feature "a user edits a jamsession", %q(
 
-As an authenticated user
-I want to edit my jamsession
-So that I can change the details of my meetup
+  As an authenticated user
+  I want to edit my jamsession
+  So that I can change the details of my meetup
 
-Acceptance Criteria
-[x] I must be able to edit the title, time, location, and description
-[x] Upon successfully editing a jamsession, I must see an message indicating success
-[ ] If I make errors, I am prompted with the appropriate error messages
-[x] I must not be able to edit someone else's jamsession
+  Acceptance Criteria
+  [x] I must be able to edit the title, time, location, and description
+  [x] Upon successfully editing a jam session, I must see an message indicating success
+  [ ] If I make errors, I am prompted with the appropriate error messages
+  [x] I must not be able to edit someone else's jam session
 
 ) do
 
