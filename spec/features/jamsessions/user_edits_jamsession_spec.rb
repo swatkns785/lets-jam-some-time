@@ -9,7 +9,7 @@ feature "a user edits a jamsession", %q(
   Acceptance Criteria
   [x] I must be able to edit the title, time, location, and description
   [x] Upon successfully editing a jam session, I must see an message indicating success
-  [ ] If I make errors, I am prompted with the appropriate error messages
+  [x] If I make errors, I am prompted with the appropriate error messages
   [x] I must not be able to edit someone else's jam session
 
 ) do

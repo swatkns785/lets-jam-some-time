@@ -8,4 +8,6 @@
 <% if @jamsession.user_id == current_user.id %>
   <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
   <p><%= link_to "Delete this Jam Session", jamsession_path(@jamsession), method: :delete %></p>
+<% else %>
+  <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
 <% end %>
