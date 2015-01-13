@@ -1,5 +1,10 @@
 class JamsessionsController < ApplicationController
 
+  def index
+    @jamsessions = Jamsession.all
+    @jamsessions = @jamsessions.order('created_at DESC')
+  end
+
   def show
     @jamsession = Jamsession.find(params[:id])
   end

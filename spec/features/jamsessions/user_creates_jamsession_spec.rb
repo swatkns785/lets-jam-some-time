@@ -10,7 +10,7 @@ feature "user creates jamsession", %q(
   [ ] I must be able to create a jamsession from the meetups index page
   [ ] I must be able to add a title, time, location, and description
   [ ] If I make errors, I am prompted with the appropriate error messages
-  [ ] Upon successful creation, I am redirected the page for the just created jamsession
+  [ ] Upon successful creation, I am redirected the page for the just created jam session
 
 ) do
 
