@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
     user.nickname = auth["info"]["nickname"]
     user.permalink = auth["extra"]["raw_info"]["permalink"]
     user.avatar_url = auth["info"]["image"]
-    user.token = auth["credentials"]["token"]
     user.save!
     user
   end
