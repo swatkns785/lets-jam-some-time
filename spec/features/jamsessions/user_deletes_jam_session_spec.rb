@@ -9,7 +9,7 @@ feature "a user deletes a jam session", %q(
   Acceptance Criteria
   [x] I must be able to delete the jamsession from the jamsession page
   [ ] All associated attendees and comments must be deleted as well
-  [ ] I must not be able to delete someone else's jam session
+  [x] I must not be able to delete someone else's jam session
 
 ) do
 
@@ -27,6 +27,24 @@ feature "a user deletes a jam session", %q(
 
     expect(page).to have_content "Your jam session has been successfully deleted."
     expect(page).to_not have_content jam.title
+
+  end
+
+  scenario "user cannot delete someone else's playlist" do
+
+    user = FactoryGirl.create(:user)
+    jam = FactoryGirl.create(:jamsession, user_id: user.id)
+    user2 = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+    create_jamsession(jam)
+
+    click_link "Sign Out"
+
+    sign_in_as(user2)
+
+    visit jamsession_path(jam.id)
+    expect(page).to_not have_content "Delete this Jam Session"
 
   end
 
