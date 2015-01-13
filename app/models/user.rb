@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :jamsessions
 
   def self.find_or_create_from_omniauth(auth)
     account_credentials = { soundcloud_id: auth["uid"], provider: auth["provider"] }

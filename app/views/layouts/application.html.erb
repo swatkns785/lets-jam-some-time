@@ -11,6 +11,7 @@
     <% if current_user %>
       <li><%= "Signed in as #{current_user.nickname}" %></li>
       <li><%= link_to "Profile", user_path(current_user.id) %></li>
+      <li><%= link_to "Create a Jam Session", new_jamsession_path(@jamsession) %>
     <% else %>
       <li><%= link_to "Sign in with Soundcloud", "/auth/soundcloud" %></li>
     <% end %>
