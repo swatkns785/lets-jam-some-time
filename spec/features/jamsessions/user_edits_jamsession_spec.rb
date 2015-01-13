@@ -65,4 +65,25 @@ feature "a user edits a jamsession", %q(
 
   end
 
+  scenario "user leaves all fields blank when editing jam session" do
+
+    user = FactoryGirl.create(:user)
+    jam = FactoryGirl.create(:jamsession, user_id: user.id)
+
+    sign_in_as(user)
+    create_jamsession(jam)
+
+    visit edit_jamsession_path(jam)
+
+    fill_in "Title", with: ""
+    fill_in "Location", with: ""
+    fill_in "Description", with: ""
+    click_button "Update"
+
+    expect(page).to have_content "Title can't be blank"
+    expect(page).to have_content "Location can't be blank"
+    expect(page).to have_content "Description can't be blank"
+
+  end
+
 end
