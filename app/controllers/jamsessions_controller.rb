@@ -1,5 +1,10 @@
 class JamsessionsController < ApplicationController
 
+  def index
+    @jamsessions = Jamsession.all
+    @jamsessions = @jamsessions.order('created_at DESC')
+  end
+
   def show
     @jamsession = Jamsession.find(params[:id])
   end
@@ -21,11 +26,11 @@ class JamsessionsController < ApplicationController
   end
 
   def edit
-    @jamsession = Jamsession.find(params[:id])
+    @jamsession = current_user.jamsessions.find(params[:id])
   end
 
   def update
-    @jamsession = Jamsession.find(params[:id])
+    @jamsession = current_user.jamsessions.find(params[:id])
 
     if @jamsession.update(jamsession_params)
       flash[:notice] = "Your jam session has been successfully updated."
@@ -33,6 +38,13 @@ class JamsessionsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @jamsession = current_user.jamsessions.find(params[:id])
+    @jamsession.destroy
+    flash[:notice] = "Your jam session has been successfully deleted."
+    redirect_to root_path
   end
 
   private

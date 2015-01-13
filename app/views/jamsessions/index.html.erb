@@ -1,0 +1,4 @@
+<% @jamsessions.each do |jam| %>
+  <p><%= link_to jam.title, jamsession_path(jam) %></p>
+  <p><%= jam.location %></p>
+<% end %>
