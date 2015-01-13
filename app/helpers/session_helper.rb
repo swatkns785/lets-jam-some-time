@@ -1,5 +1,4 @@
 module SessionHelper
-
   def user_signed_in?
     !current_user.nil?
   end
@@ -9,6 +8,6 @@ module SessionHelper
   end
 
   def set_current_user(user)
-    @current_user = user
+    session[:user_id] = user.id
   end
 end

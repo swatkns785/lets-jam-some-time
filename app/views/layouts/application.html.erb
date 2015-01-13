@@ -8,10 +8,11 @@
 </head>
 <body>
   <div>
-    <% if user_signed_in? %>
-    <li><%= "Sign in as #{current_user.nickname}" %></li>
+    <% if current_user %>
+      <li><%= "Signed in as #{current_user.nickname}" %></li>
+      <li><%= link_to "Profile", user_path(current_user.id) %></li>
     <% else %>
-    <li><%= link_to "Sign in with Soundcloud", "/auth/soundcloud" %></li>
+      <li><%= link_to "Sign in with Soundcloud", "/auth/soundcloud" %></li>
     <% end %>
   </div>
 
