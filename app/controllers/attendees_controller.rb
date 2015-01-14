@@ -14,4 +14,12 @@ class AttendeesController < ApplicationController
     end
   end
 
+  def destroy
+    @jamsession = Jamsession.find(params[:jamsession_id])
+    @approved_attendee = Attendee.find_by(user_id: current_user.id, approval: true)
+    @approved_attendee.destroy
+    flash[:notice] = "You have successfully left this jam session."
+    redirect_to jamsession_path(@jamsession)
+  end
+
 end
