@@ -7,6 +7,8 @@ class JamsessionsController < ApplicationController
 
   def show
     @jamsession = Jamsession.find(params[:id])
+    @approved_attendees = Attendee.where(jamsession_id: params[:id], approval: true)
+    @attendee = Attendee.new
   end
 
   def new
@@ -18,6 +20,8 @@ class JamsessionsController < ApplicationController
     @jamsession.user = current_user
 
     if @jamsession.save
+      @creator_attendee = Attendee.new(user_id: current_user.id, jamsession_id: Jamsession.last.id, approval: true)
+      @creator_attendee.save
       flash[:notice] = "Your jam session has been successfully created."
       redirect_to jamsession_path(@jamsession)
     else
@@ -26,11 +30,11 @@ class JamsessionsController < ApplicationController
   end
 
   def edit
-    @jamsession = current_user.jamsessions.find(params[:id])
+    @jamsession = Jamsession.find(params[:id])
   end
 
   def update
-    @jamsession = current_user.jamsessions.find(params[:id])
+    @jamsession = Jamsession.find(params[:id])
 
     if @jamsession.update(jamsession_params)
       flash[:notice] = "Your jam session has been successfully updated."
@@ -41,7 +45,7 @@ class JamsessionsController < ApplicationController
   end
 
   def destroy
-    @jamsession = current_user.jamsessions.find(params[:id])
+    @jamsession = Jamsession.find(params[:id])
     @jamsession.destroy
     flash[:notice] = "Your jam session has been successfully deleted."
     redirect_to root_path
