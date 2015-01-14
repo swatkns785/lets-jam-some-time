@@ -11,14 +11,30 @@
   <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
   <p><%= link_to "Delete this Jam Session", jamsession_path(@jamsession), method: :delete %></p>
 <% end %>
-<% if @approved_attendee %>
-  <p><%= link_to "Leave this Jam Session", jamsession_attendee_path(@jamsession, @approved_attendee.user_id), method: :delete %></p>
-<% else %>
-  <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
+
+<% if current_user.id != @jamsession.user_id %>
+  <% if @approved_attendee %>
+    <p><%= link_to "Leave this Jam Session", jamsession_attendee_path(@jamsession, @approved_attendee.user_id), method: :delete %></p>
+  <% else %>
+    <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
+  <% end %>
 <% end %>
 
 
 <h3>Attendees</h3>
 <% @approved_attendees.each do |at| %>
-  <%= at.user.nickname %>
+  <p><%= link_to at.user.nickname, user_path(at.user.id) %></p>
+  <% if at.approval == true %>
+    <p>Status: Approved</p>
+  <% end %>
+<% end %>
+
+<% if current_user.id == @jamsession.user_id %>
+  <h3>Pending Requests</h3>
+  <% @pending_attendees.each do |pt| %>
+    <p><%= link_to pt.user.nickname, user_path(pt.user.id) %></p>
+    <% if pt.approval == false %>
+      <p>Status: Pending</p>
+    <% end %>
+  <% end %>
 <% end %>
