@@ -10,9 +10,13 @@
 <% if @jamsession.user_id == current_user.id %>
   <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
   <p><%= link_to "Delete this Jam Session", jamsession_path(@jamsession), method: :delete %></p>
+<% end %>
+<% if @approved_attendee %>
+  <p><%= link_to "Leave this Jam Session", jamsession_attendee_path(@jamsession, @approved_attendee.user_id), method: :delete %></p>
 <% else %>
   <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
 <% end %>
+
 
 <h3>Attendees</h3>
 <% @approved_attendees.each do |at| %>

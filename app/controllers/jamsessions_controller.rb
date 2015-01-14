@@ -9,6 +9,7 @@ class JamsessionsController < ApplicationController
     @jamsession = Jamsession.find(params[:id])
     @approved_attendees = Attendee.where(jamsession_id: params[:id], approval: true)
     @attendee = Attendee.new
+    @approved_attendee = Attendee.find_by(user_id: current_user.id, approval: true)
   end
 
   def new

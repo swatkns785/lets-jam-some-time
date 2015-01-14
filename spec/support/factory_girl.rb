@@ -21,5 +21,6 @@ FactoryGirl.define do
   factory :attendee do
     sequence(:user_id) { |n| 5 + n }
     approval false
+    user
   end
 end
