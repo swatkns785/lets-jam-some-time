@@ -15,12 +15,10 @@ feature "user views approved attendees", %q(
 
     creator = FactoryGirl.create(:user)
     jam = FactoryGirl.create(:jamsession, user_id: creator.id)
-    user1 = FactoryGirl.create(:user)
-    user2 = FactoryGirl.create(:user)
-    attendee1 = FactoryGirl.create(:attendee, approval: true, jamsession_id: jam.id, user_id: user1.id)
-    attendee2 = FactoryGirl.create(:attendee, approval: false, jamsession_id: jam.id, user_id: user2.id)
+    attendee1 = FactoryGirl.create(:attendee, approval: true, jamsession_id: jam.id)
+    attendee2 = FactoryGirl.create(:attendee, approval: false, jamsession_id: jam.id)
 
-    sign_in_as(creator)
+    sign_in_as(attendee1.user)
 
     visit jamsession_path(jam)
 

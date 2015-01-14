@@ -14,6 +14,18 @@ class AttendeesController < ApplicationController
     end
   end
 
+  def update
+    @jamsession = Jamsession.find(params[:jamsession_id])
+    @attendee = Attendee.find_by(id: params[:id], jamsession_id: @jamsession.id)
+    @attendee.approval = params[:query]
+    if @attendee.save
+      flash[:notice] = "Attendees updated."
+      redirect_to jamsession_path(@jamsession)
+    else
+      render 'jamsessions/show'
+    end
+  end
+
   def destroy
     @jamsession = Jamsession.find(params[:jamsession_id])
     @approved_attendee = Attendee.find_by(user_id: current_user.id, approval: true)

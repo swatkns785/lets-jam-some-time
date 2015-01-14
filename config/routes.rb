@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :jamsessions, only: :show do
-    resources :attendees, only: :destroy
+    resources :attendees, only: [:update, :destroy]
   end
 
 end
