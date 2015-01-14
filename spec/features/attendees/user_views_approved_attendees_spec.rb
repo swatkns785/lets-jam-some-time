@@ -8,7 +8,6 @@ feature "user views approved attendees", %q(
 
   Acceptance Criteria
   [x] I must be able to view other approved attendees on individual jam session page
-  [ ] I must not be able to view other attendees on individual jam session page if not approved
 
 ) do
 
