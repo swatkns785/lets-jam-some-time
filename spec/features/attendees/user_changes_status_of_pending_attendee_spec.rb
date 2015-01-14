@@ -12,7 +12,7 @@ feature "jam session creator approves pending request to join jam session", %q(
 
 ) do
 
-  scenario "user changes attendee status to approved", focus: true do
+  scenario "user changes attendee status to approved" do
 
     creator = FactoryGirl.create(:user)
     jam = FactoryGirl.create(:jamsession, user_id: creator.id)
