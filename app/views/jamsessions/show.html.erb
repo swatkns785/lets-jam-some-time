@@ -2,14 +2,19 @@
 <% if @jamsession.user == current_user %>
   <p>Where: <%= @jamsession.location %></p>
 <% end %>
-  <p>What: <%= @jamsession.description %></p>
-  <p>When: <%= @jamsession.date %></p>
-  <p>Present Instruments: <%= @jamsession.present_instrument %></p>
-  <p>Desired Instruments: <%= @jamsession.desired_instruments %></p>
+<p>What: <%= @jamsession.description %></p>
+<p>When: <%= @jamsession.date %></p>
+<p>Present Instruments: <%= @jamsession.present_instrument %></p>
+<p>Desired Instruments: <%= @jamsession.desired_instruments %></p>
 
 <% if @jamsession.user_id == current_user.id %>
   <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
   <p><%= link_to "Delete this Jam Session", jamsession_path(@jamsession), method: :delete %></p>
 <% else %>
   <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
+<% end %>
+
+<h3>Attendees</h3>
+<% @approved_attendees.each do |at| %>
+  <%= at.user.nickname %>
 <% end %>

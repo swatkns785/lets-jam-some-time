@@ -17,4 +17,9 @@ FactoryGirl.define do
     present_instrument "Bassoon"
     desired_instruments "Oboe, clarinet, tuba"
   end
+
+  factory :attendee do
+    sequence(:user_id) { |n| 5 + n }
+    approval false
+  end
 end
