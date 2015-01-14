@@ -35,6 +35,7 @@
     <p><%= link_to pt.user.nickname, user_path(pt.user.id) %></p>
     <% if pt.approval == false %>
       <p>Status: Pending</p>
+      <p><%= link_to "Approve this Request", jamsession_attendee_path(@jamsession, pt.id, query: true), method: :patch %></p>
     <% end %>
   <% end %>
 <% end %>
