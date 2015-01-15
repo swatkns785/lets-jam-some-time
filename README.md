@@ -2,17 +2,28 @@
 
 January 12, 2015
 
--Implemented Soundcloud sign-in and authentication functionality.
+*Implemented Soundcloud sign-in and authentication functionality.
 
--Wrote test and appropriate code for an authenticated user to create jam session.
+*Wrote test and appropriate code for an authenticated user to create jam session.
 
 
 January 13, 2015
 
--Wrote tests and code for editing and deleting a jam session.
+*Wrote tests and code for editing and deleting a jam session.
 
--Wrote tests and code for preventing a user from deleting or editing the information on another user's jam session.
+*Wrote tests and code for preventing a user from deleting or editing the information on another user's jam session.
 
--Wrote tests and code for user to request joining a jam session.
+*Wrote tests and code for user to request joining a jam session.
 
--Wrote tests preventing a prospective attendee from seeing the location of the jam session unless they are approved by the creator of the jam session.
+*Wrote tests preventing a prospective attendee from seeing the location of the jam session unless they are approved by the creator of the jam session.
+
+
+January 14, 2015
+
+*Approved attendee can leave a jam session.
+
+*Wrote some view validations for jam session creator functionality.
+
+*Implemented functionality for a jam session creator to approve prospective attendees for the jam session.
+
+*Wrote seed file for development database
