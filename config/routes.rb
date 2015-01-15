@@ -16,4 +16,10 @@ Rails.application.routes.draw do
     resources :attendees, only: [:update, :destroy]
   end
 
+  resources :jamsessions, only: :show do
+    resources :tracks, only: [:new, :create]
+  end
+
+  resources :tracks
+  
 end
