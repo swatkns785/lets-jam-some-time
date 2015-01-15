@@ -1,0 +1,17 @@
+<%= form_for @track do |f| %>
+
+  <div>
+    <%= f.label :track_title, 'Title' %>
+    <%= f.text_field :track_title %>
+  </div>
+
+  <div>
+    <%= f.label :song_file, 'Audio File' %>
+    <%= f.file_field :song_file %>
+  </div>
+
+  <div>
+    <%= f.submit "Upload" %>
+  </div>
+
+<% end %>

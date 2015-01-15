@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'omniauth-soundcloud', '~> 1.0.0'
 gem 'dotenv-rails'
+gem 'soundcloud'
 
 group :development, :test do
   gem 'pry-rails'
