@@ -26,7 +26,7 @@ feature "a user requests to sign up for a jam session", %q(
     click_link "Join this Jam Session"
 
     expect(page).to have_content "You have successfully requested to join this jam session. Stand by for e-mail confirmation from #{jam.user.nickname}."
-    expect(page).to_not have_content jam.location
+    expect(page).to_not have_content jam.address
 
   end
 

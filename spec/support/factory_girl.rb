@@ -11,7 +11,10 @@ FactoryGirl.define do
 
   factory :jamsession do
     sequence(:title) { |n| "Funkytown #{n}"}
-    location "123 Main Street, Allston, MA 02135"
+    sequence(:address) { |n| "15#{n} North Beacon Street" }
+    city "Boston"
+    state "MA"
+    zip_code "02135"
     description "This is a jam session where we will get funky."
     sequence(:date) { |n| Date.today + n.months }
     present_instrument "Bassoon"

@@ -56,7 +56,7 @@ class JamsessionsController < ApplicationController
   private
 
   def jamsession_params
-    params.require(:jamsession).permit(:title, :description, :location, :date, :present_instrument, :desired_instruments)
+    params.require(:jamsession).permit(:title, :description, :address, :city, :state, :zip_code, :date, :present_instrument, :desired_instruments)
   end
 
 end

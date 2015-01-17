@@ -1,6 +1,6 @@
 <p>Title: <%= @jamsession.title %></p>
 <% if @jamsession.user == current_user %>
-  <p>Where: <%= @jamsession.location %></p>
+  <p>Where: <%= @jamsession.address %>, <%= @jamsession.city %>, <%= @jamsession.state %>, <%= @jamsession.zip_code %></p>
 <% end %>
 <p>What: <%= @jamsession.description %></p>
 <p>When: <%= @jamsession.date %></p>
