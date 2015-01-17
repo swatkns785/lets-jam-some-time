@@ -3,21 +3,43 @@
 <head>
   <title>Jams</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    'custom' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div>
-    <% if current_user %>
-      <li><%= "Signed in as #{current_user.nickname}" %></li>
-      <li><%= link_to "Profile", user_path(current_user.id) %></li>
-      <li><%= link_to "Create a Jam Session", new_jamsession_path(@jamsession) %>
-      <li><%= link_to "Sign Out", '/logout' %></li>
-    <% else %>
-      <li><%= link_to "Sign in with Soundcloud", "/auth/soundcloud" %></li>
-    <% end %>
+
+  <!-- Navigation -->
+  <div class ="contain-to-grid sticky">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1>
+            <%= link_to "Let's Jam", root_path %>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="has-button">
+            <% if current_user %>
+              <li>Signed in as <%= current_user.nickname %></li>
+              <li><%= link_to "Profile", user_path(current_user.id) %></li>
+              <li><%= link_to "Create a Jam Session", new_jamsession_path(@jamsession) %>
+              <li><%= link_to "Sign Out", '/logout' %></li>
+            <% else %>
+              <li><%= link_to "Sign in with Soundcloud", "/auth/soundcloud" %></li>
+            <% end %>
+          </li>
+        </ul>
+      </section>
+    </nav>
   </div>
 
+  <!-- End Navigation -->
   <% flash.each do |key, value| %>
   <div data-alert class="flash flash-<%= key %> alert-box">
     <%= value %>
@@ -25,6 +47,9 @@
   <% end %>
 
 <%= yield %>
+
+
+
 
 </body>
 </html>
