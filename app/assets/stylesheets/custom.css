@@ -3,12 +3,13 @@
   background-color: #000;
 }*/
 
-body {
-  background: url("pianoman.jpeg") no-repeat center center fixed;
+/*body {
+  background: url("pianomandark.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: Trebuchet MS, Helvetica;
 }
 
 .homepagebuffer-large {
@@ -32,11 +33,13 @@ body {
 .headertextlarge {
   color: white;
   font-size: 7.5em;
+  font-family: Trebuchet MS;
 }
 
 .headertextsmall {
   color: white;
   font-size: 4em;
+  font-family: Trebuchet MS;
 }
 
 .subheadertextsmall {
@@ -50,5 +53,10 @@ body {
 }
 
 #homepage-search-button {
-  background-color: #888;
+  background-color: #222;
 }
+
+.index-signin-button-container-large row {
+  height: 50px;
+  vertical-align: center;
+}*/
