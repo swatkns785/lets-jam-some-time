@@ -27,3 +27,24 @@ January 14, 2015
 *Implemented functionality for a jam session creator to approve prospective attendees for the jam session.
 
 *Wrote seed file for development database
+
+
+January 15, 2015
+
+*Implemented functionality for a jam session attendee to upload to their personal soundcloud account via this app.
+
+-Technical difficulties
+
+  -Establishing connection to Soundcloud API proved difficult
+
+  -Determing how to format the POST request to the API
+
+  -Determining success in test environment without valid Souncloud API token
+
+January 16, 2015
+
+-Styled the home page and refactored some extraneous code.
+
+January 17, 2015
+
+-Installed Geokit gem to retrieve latitude and longitude for faster search functionality. Currently having issues where I create a jam session, the post request enters an infinite loop and I run out allocated queries for a given time period.
