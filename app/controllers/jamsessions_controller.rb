@@ -64,9 +64,6 @@ class JamsessionsController < ApplicationController
     if loc.success
       jamsession_params[:latitude] = loc.latitude
       jamsession_params[:longitude] = loc.longitude
-    else
-      flash[:alert] = "Google is being stupid. Try again later."
-      redirect_to jamsession_path(@jamsession)
     end
     jamsession_params
   end
