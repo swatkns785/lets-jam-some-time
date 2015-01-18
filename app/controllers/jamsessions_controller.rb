@@ -1,4 +1,5 @@
 class JamsessionsController < ApplicationController
+  include Geokit::Geocoders
 
   def index
     @jamsessions = Jamsession.all
@@ -56,7 +57,18 @@ class JamsessionsController < ApplicationController
   private
 
   def jamsession_params
-    params.require(:jamsession).permit(:title, :description, :address, :city, :state, :zip_code, :date, :present_instrument, :desired_instruments)
+    params.require(:jamsession).permit(:title, :description, :address, :city, :state, :zip_code, :date, :present_instrument, :desired_instruments, :latitude, :longitude)
+
+    address = "#{params[:jamsession][:address]}, #{params[:jamsession][:city]}, #{params[:jamsession][:state]}"
+    loc = MultiGeocoder.geocode(address)
+    if loc.success
+      jamsession_params[:latitude] = loc.latitude
+      jamsession_params[:longitude] = loc.longitude
+    else
+      flash[:alert] = "Google is being stupid. Try again later."
+      redirect_to jamsession_path(@jamsession)
+    end
+    jamsession_params
   end
 
 end

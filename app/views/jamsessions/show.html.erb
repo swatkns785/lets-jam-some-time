@@ -1,6 +1,9 @@
+
 <p>Title: <%= @jamsession.title %></p>
 <% if @jamsession.user == current_user %>
   <p>Where: <%= @jamsession.address %>, <%= @jamsession.city %>, <%= @jamsession.state %>, <%= @jamsession.zip_code %></p>
+  <p><%= @jamsession.latitude %></p>
+  <p><%= @jamsession.longitude %></p>
 <% end %>
 <p>What: <%= @jamsession.description %></p>
 <p>When: <%= @jamsession.date %></p>
@@ -19,6 +22,7 @@
     <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
   <% end %>
 <% end %>
+
 
 <%= link_to "Upload a track to Soundcloud", new_jamsession_track_path(@jamsession) %>
 

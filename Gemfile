@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'omniauth-soundcloud', '~> 1.0.0'
 gem 'dotenv-rails'
 gem 'soundcloud'
+gem 'geokit'
+gem 'geokit-rails'
 
 group :development, :test do
   gem 'pry-rails'

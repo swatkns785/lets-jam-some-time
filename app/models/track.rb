@@ -9,7 +9,6 @@ class Track < ActiveRecord::Base
     track = client.post('/tracks', :track => {
       title: track[:track_title],
       asset_data: File.new(track[:song_file].tempfile, 'rb') })
-  #  client.post('/tracks', track: {title: "Sample Title", asset_data: track })
 
     track.save
 

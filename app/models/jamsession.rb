@@ -3,6 +3,8 @@ class Jamsession < ActiveRecord::Base
   has_many :attendees
   has_many :users, through: :attendees
 
+  acts_as_mappable lat_column_name: :latitude, lng_column_name: :longitude
+
   validates :title, presence: true
   validates :address, presence: true
   validates :city, presence: true
