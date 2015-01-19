@@ -1,11 +1,17 @@
 <p>Title: <%= @jamsession.title %></p>
 <% if @jamsession.user == current_user %>
-  <p>Where: <%= @jamsession.location %></p>
+  <p>Where: <%= @jamsession.address %>, <%= @jamsession.city %>, <%= @jamsession.state %>, <%= @jamsession.zip_code %></p>
+  <p><%= @jamsession.latitude %></p>
+  <p><%= @jamsession.longitude %></p>
 <% end %>
 <p>What: <%= @jamsession.description %></p>
 <p>When: <%= @jamsession.date %></p>
 <p>Present Instruments: <%= @jamsession.present_instrument %></p>
 <p>Desired Instruments: <%= @jamsession.desired_instruments %></p>
+
+<div id="map-container">
+  <div id="map-canvas"></div>
+</div>
 
 <% if @jamsession.user_id == current_user.id %>
   <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
@@ -19,6 +25,7 @@
     <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
   <% end %>
 <% end %>
+
 
 <%= link_to "Upload a track to Soundcloud", new_jamsession_track_path(@jamsession) %>
 
@@ -41,3 +48,7 @@
     <% end %>
   <% end %>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  var addresses = <%= @coordinates %>;
+</script>

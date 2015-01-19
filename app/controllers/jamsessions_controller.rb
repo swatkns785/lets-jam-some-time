@@ -1,4 +1,5 @@
 class JamsessionsController < ApplicationController
+  include Geokit::Geocoders
 
   def index
     @jamsessions = Jamsession.all
@@ -11,6 +12,7 @@ class JamsessionsController < ApplicationController
     @pending_attendees = Attendee.where(jamsession_id: params[:id], approval: false)
     @attendee = Attendee.new
     @approved_attendee = Attendee.find_by(user_id: current_user.id, approval: true)
+    @coordinates = Jamsession.location(@jamsession)
   end
 
   def new
@@ -56,7 +58,16 @@ class JamsessionsController < ApplicationController
   private
 
   def jamsession_params
-    params.require(:jamsession).permit(:title, :description, :location, :date, :present_instrument, :desired_instruments)
+    js_params = params.require(:jamsession).permit(:title, :description, :address, :city, :state, :zip_code, :date, :present_instrument, :desired_instruments, :latitude, :longitude)
+
+    address = "#{params[:jamsession][:address]}, #{params[:jamsession][:city]}, #{params[:jamsession][:state]}"
+
+    loc = MultiGeocoder.geocode(address)
+    if loc.success == true
+      js_params[:latitude] = loc.lat
+      js_params[:longitude] = loc.lng
+    end
+  js_params
   end
 
 end

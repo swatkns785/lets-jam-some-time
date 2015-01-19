@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115185940) do
+ActiveRecord::Schema.define(version: 20150117223938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20150115185940) do
 
   create_table "jamsessions", force: :cascade do |t|
     t.string   "title",               null: false
-    t.string   "location",            null: false
     t.text     "description",         null: false
     t.string   "present_instrument"
     t.datetime "date",                null: false
@@ -34,6 +33,12 @@ ActiveRecord::Schema.define(version: 20150115185940) do
     t.integer  "user_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address",             null: false
+    t.string   "city",                null: false
+    t.string   "state",               null: false
+    t.string   "zip_code",            null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "tracks", force: :cascade do |t|

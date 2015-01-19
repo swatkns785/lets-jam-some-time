@@ -25,7 +25,10 @@ feature "a user edits a jamsession", %q(
     click_link "Edit this Jam Session"
 
     fill_in "Title", with: "James Brown Tribute Hour"
-    fill_in "Location", with: "5446 Chuck Berry Avenue, Berryville, MD 20015"
+    fill_in "Address", with: "14 St. James Place"
+    fill_in "City", with: "Brooklyn"
+    fill_in "State", with: "NY"
+    fill_in "Zip Code", with: "11205"
     fill_in "Description", with: "A tribute to the legend, James Brown."
     select "2015", from: "jamsession_date_1i"
     select "March", from: "jamsession_date_2i"
@@ -38,7 +41,10 @@ feature "a user edits a jamsession", %q(
 
     expect(page).to have_content "Your jam session has been successfully updated."
     expect(page).to have_content "James Brown Tribute Hour"
-    expect(page).to have_content "5446 Chuck Berry Avenue, Berryville, MD 20015"
+    expect(page).to have_content "14 St. James Place"
+    expect(page).to have_content "Brooklyn"
+    expect(page).to have_content "NY"
+    expect(page).to have_content "11205"
     expect(page).to have_content "A tribute to the legend, James Brown."
     expect(page).to have_content "2015-03-14 20:55:00 UTC"
     expect(page).to have_content "Electric bass"
@@ -73,12 +79,10 @@ feature "a user edits a jamsession", %q(
     visit edit_jamsession_path(jam)
 
     fill_in "Title", with: ""
-    fill_in "Location", with: ""
     fill_in "Description", with: ""
     click_button "Update"
 
     expect(page).to have_content "Title can't be blank"
-    expect(page).to have_content "Location can't be blank"
     expect(page).to have_content "Description can't be blank"
 
   end

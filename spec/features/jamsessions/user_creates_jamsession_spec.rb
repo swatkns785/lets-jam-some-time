@@ -24,8 +24,11 @@ feature "user creates jamsession", %q(
     click_link "Create a Jam Session"
 
     fill_in "Title", with: jam.title
-    fill_in "Location", with: jam.location
     fill_in "Description", with: jam.description
+    fill_in "Address", with: jam.address
+    fill_in "City", with: jam.city
+    fill_in "State", with: jam.state
+    fill_in "Zip Code", with: jam.zip_code
     select "2015", from: "jamsession_date_1i"
     select "January", from: "jamsession_date_2i"
     select "31", from: "jamsession_date_3i"
@@ -38,7 +41,7 @@ feature "user creates jamsession", %q(
     expect(page).to have_content "Your jam session has been successfully created."
 
     expect(page).to have_content jam.title
-    expect(page).to have_content jam.location
+    expect(page).to have_content jam.address
     expect(page).to have_content jam.description
     expect(page).to have_content "2015-01-31 16:20:00 UTC"
     expect(page).to have_content jam.present_instrument
@@ -58,7 +61,6 @@ feature "user creates jamsession", %q(
     click_button "Create"
 
     expect(page).to have_content "Title can't be blank"
-    expect(page).to have_content "Location can't be blank"
     expect(page).to have_content "Description can't be blank"
 
   end
