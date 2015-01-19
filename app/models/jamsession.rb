@@ -14,4 +14,8 @@ class Jamsession < ActiveRecord::Base
   validates :date, presence: true
   validates :user, presence: true
 
+  def self.location(jamsession)
+    [[jamsession.latitude, jamsession.longitude]]
+  end
+
 end
