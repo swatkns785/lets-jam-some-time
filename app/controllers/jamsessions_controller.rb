@@ -57,15 +57,16 @@ class JamsessionsController < ApplicationController
   private
 
   def jamsession_params
-    params.require(:jamsession).permit(:title, :description, :address, :city, :state, :zip_code, :date, :present_instrument, :desired_instruments, :latitude, :longitude)
+    js_params = params.require(:jamsession).permit(:title, :description, :address, :city, :state, :zip_code, :date, :present_instrument, :desired_instruments, :latitude, :longitude)
 
     address = "#{params[:jamsession][:address]}, #{params[:jamsession][:city]}, #{params[:jamsession][:state]}"
+
     loc = MultiGeocoder.geocode(address)
-    if loc.success
-      jamsession_params[:latitude] = loc.latitude
-      jamsession_params[:longitude] = loc.longitude
+    if loc.success == true
+      js_params[:latitude] = loc.lat
+      js_params[:longitude] = loc.lng
     end
-    jamsession_params
+  js_params
   end
 
 end
