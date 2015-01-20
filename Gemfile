@@ -12,6 +12,7 @@ gem 'dotenv-rails'
 gem 'soundcloud'
 gem 'geokit'
 gem 'geokit-rails'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'pry-rails'
