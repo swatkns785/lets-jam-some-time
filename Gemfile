@@ -13,6 +13,7 @@ gem 'soundcloud'
 gem 'geokit'
 gem 'geokit-rails'
 gem 'rails_12factor'
+gem 'bundler'
 
 group :development, :test do
   gem 'pry-rails'
