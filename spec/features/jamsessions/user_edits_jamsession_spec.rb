@@ -46,7 +46,7 @@ feature "a user edits a jamsession", %q(
     expect(page).to have_content "NY"
     expect(page).to have_content "11205"
     expect(page).to have_content "A tribute to the legend, James Brown."
-    expect(page).to have_content "2015-03-14 20:55:00 UTC"
+    expect(page).to have_content "March 14, 2015 @ 8:55 PM"
     expect(page).to have_content "Electric bass"
     expect(page).to have_content "Guitar, drums x5, James Brown impersonator"
     expect(page).to_not have_content jam.title

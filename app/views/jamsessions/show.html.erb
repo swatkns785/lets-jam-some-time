@@ -1,54 +1,58 @@
-<p>Title: <%= @jamsession.title %></p>
-<% if @jamsession.user == current_user %>
-  <p>Where: <%= @jamsession.address %>, <%= @jamsession.city %>, <%= @jamsession.state %>, <%= @jamsession.zip_code %></p>
-  <p><%= @jamsession.latitude %></p>
-  <p><%= @jamsession.longitude %></p>
-<% end %>
-<p>What: <%= @jamsession.description %></p>
-<p>When: <%= @jamsession.date %></p>
-<p>Present Instruments: <%= @jamsession.present_instrument %></p>
-<p>Desired Instruments: <%= @jamsession.desired_instruments %></p>
+<div class="row">
+  <div class="large-6 columns">
+    <h2 class="jam-title"><%= @jamsession.title %></h2>
+    <p class="jam-time">When: <%= @jamsession.date.strftime("%B %e, %Y @ %l:%M %p") %></p>
+    <p class="jam-instruments">Present Instruments: <%= @jamsession.present_instrument %></p>
+    <p class="jam-instruments">Desired Instruments: <%= @jamsession.desired_instruments %></p>
+    <p class="jam-description"><%= @jamsession.description %></p>
+  </div>
+  <div class="large-6 columns">
+    <div id="map-container">
+      <div id="map-canvas"></div>
+    </div>
+    <p class="jam-organized">Organized by <%= link_to @jamsession.user.nickname, user_path(@jamsession.user.id) %></p>
+    <% if @jamsession.user == current_user %>
+    <p class="jam-address">Where: <%= @jamsession.address %>, <%= @jamsession.city %>, <%= @jamsession.state %>, <%= @jamsession.zip_code %></p>
+    <% end %>
+  </div>
+  <div class="large-12 columns">
+    <% if @jamsession.user_id == current_user.id %>
+      <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
+      <p><%= link_to "Delete this Jam Session", jamsession_path(@jamsession), method: :delete %></p>
+    <% end %>
 
-<div id="map-container">
-  <div id="map-canvas"></div>
+    <% if current_user.id != @jamsession.user_id %>
+      <% if @approved_attendee %>
+        <p><%= link_to "Leave this Jam Session", jamsession_attendee_path(@jamsession, @approved_attendee.user_id), method: :delete %></p>
+      <% else %>
+        <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
+      <% end %>
+    <% end %>
+
+    <%= link_to "Upload a track to Soundcloud", new_jamsession_track_path(@jamsession) %>
+
+    <h3>Attendees</h3>
+    <% @approved_attendees.each do |at| %>
+      <p><%= link_to at.user.nickname, user_path(at.user.id) %></p>
+      <% if at.approval == true %>
+        <p>Status: Approved</p>
+      <% end %>
+    <% end %>
+
+    <% if current_user.id == @jamsession.user_id %>
+      <h3>Pending Requests</h3>
+      <% @pending_attendees.each do |pt| %>
+        <p><%= link_to pt.user.nickname, user_path(pt.user.id) %></p>
+        <% if pt.approval == false %>
+          <p>Status: Pending</p>
+          <p><%= link_to "Approve this Request", jamsession_attendee_path(@jamsession, pt.id, query: true), method: :patch %></p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
-<% if @jamsession.user_id == current_user.id %>
-  <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
-  <p><%= link_to "Delete this Jam Session", jamsession_path(@jamsession), method: :delete %></p>
-<% end %>
 
-<% if current_user.id != @jamsession.user_id %>
-  <% if @approved_attendee %>
-    <p><%= link_to "Leave this Jam Session", jamsession_attendee_path(@jamsession, @approved_attendee.user_id), method: :delete %></p>
-  <% else %>
-    <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
-  <% end %>
-<% end %>
-
-
-<%= link_to "Upload a track to Soundcloud", new_jamsession_track_path(@jamsession) %>
-
-
-<h3>Attendees</h3>
-<% @approved_attendees.each do |at| %>
-  <p><%= link_to at.user.nickname, user_path(at.user.id) %></p>
-  <% if at.approval == true %>
-    <p>Status: Approved</p>
-  <% end %>
-<% end %>
-
-<% if current_user.id == @jamsession.user_id %>
-  <h3>Pending Requests</h3>
-  <% @pending_attendees.each do |pt| %>
-    <p><%= link_to pt.user.nickname, user_path(pt.user.id) %></p>
-    <% if pt.approval == false %>
-      <p>Status: Pending</p>
-      <p><%= link_to "Approve this Request", jamsession_attendee_path(@jamsession, pt.id, query: true), method: :patch %></p>
-    <% end %>
-  <% end %>
-<% end %>
-
-<script type="text/javascript" charset="utf-8">
-  var addresses = <%= @coordinates %>;
-</script>
+  <script type="text/javascript" charset="utf-8">
+    var addresses = <%= @coordinates %>;
+  </script>
