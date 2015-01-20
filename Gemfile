@@ -14,10 +14,10 @@ gem 'geokit'
 gem 'geokit-rails'
 gem 'rails_12factor'
 gem 'bundler'
+gem 'rspec-rails'
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'launchy'
