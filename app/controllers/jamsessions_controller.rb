@@ -2,7 +2,11 @@ class JamsessionsController < ApplicationController
   include Geokit::Geocoders
 
   def index
-    @jamsessions = Jamsession.all
+    if params[:query]
+      @jamsessions = Jamsession.search(params[:query])
+    else
+      @jamsessions = Jamsession.all
+    end
     @jamsessions = @jamsessions.order('created_at DESC')
   end
 

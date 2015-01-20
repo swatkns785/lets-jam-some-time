@@ -19,6 +19,7 @@ FactoryGirl.define do
     sequence(:date) { |n| Date.today + n.months }
     present_instrument "Bassoon"
     desired_instruments "Oboe, clarinet, tuba"
+    user
   end
 
   factory :attendee do
