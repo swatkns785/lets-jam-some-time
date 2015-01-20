@@ -1,10 +1,6 @@
-/*body {
-  background-image: url("pianoman.jpeg");
-  background-color: #000;
-}*/
-
 body {
   background: url("pianomandark.png") no-repeat center center fixed;
+  background-color: #000;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,13 +8,15 @@ body {
   font-family: Trebuchet MS, Helvetica;
 }
 
+.contain-to-grid sticky {
+  position:fixed;
+  width:100%;
+}
+
 .homepagebuffer-large {
   height: 75px;
 }
 
-.homepagebuffer-small {
-  height:25px;
-}
 
 .homepage-header {
   text-align: center;
@@ -30,10 +28,14 @@ body {
   line-height: 20px;
 }
 
-.headertextlarge {
-  color: white;
-  font-size: 7.5em;
-  font-family: Trebuchet MS;
+#headertextlarge-container img {
+  width:80%;
+  align:center;
+}
+
+#headertextsmall-container img {
+  width:80%;
+  align:center;
 }
 
 .headertextsmall {
@@ -56,23 +58,24 @@ body {
   background-color: #222;
 }
 
-.index-signin-button-container-large row {
-  height: 50px;
+#homepage-search-button-sign-in {
+  background-color: #FD600A;
+}
+
+#index-signin-button-container-large img {
   vertical-align: center;
+  margin:15px;
+  margin-bottom:-30px;
 }
 
 #map-container {
-  height: 400px;
-  border-radius: 16px 16px;
-  border-color: #fff;
-  border-style: solid;
-  box-shadow: 2px 2px 10px #B1B1B1;
-  margin-top: 25px;
-  border-width: 7px;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 
 #map-canvas {
-  height: 384px;
+  height: 450px;
   width: 100%;
 }
 
@@ -82,4 +85,42 @@ body {
 
 #map-container #map-canvas label {
   width: auto; display:inline;
+}
+
+.jam-title {
+  margin-top:25px;
+  color: #fff;
+  font-size:3em;
+  line-height:1.2em;
+  font-family: Trebuchet MS;
+}
+
+.jam-description {
+  color: #cecece;
+}
+
+.jam-address {
+  color: #cecece;
+  text-align: center;
+}
+
+.jam-time {
+  color: #cecece;
+  font-size: 1.5em;
+}
+
+.jam-instruments {
+  color: #cecece;
+  font-size:1.25em;
+  line-height:1.25em;
+}
+
+.jam-organized {
+  font-size: 2em;
+  color: #cecece;
+  text-align: center;
+}
+
+.nav-logo {
+  width:100px;
 }

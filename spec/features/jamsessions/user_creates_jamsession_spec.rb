@@ -43,7 +43,7 @@ feature "user creates jamsession", %q(
     expect(page).to have_content jam.title
     expect(page).to have_content jam.address
     expect(page).to have_content jam.description
-    expect(page).to have_content "2015-01-31 16:20:00 UTC"
+    expect(page).to have_content "January 31, 2015 @ 4:20 PM"
     expect(page).to have_content jam.present_instrument
     expect(page).to have_content jam.desired_instruments
     expect(page).to have_content user.nickname

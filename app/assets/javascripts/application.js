@@ -13,3 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(window).scroll(
+{
+  previousTop: 0
+},
+function () {
+  var currentTop = $(window).scrollTop();
+  if (currentTop < this.previousTop) {
+    $(".top-bar").show();
+  } else {
+    $(".top-bar").hide();
+  }
+  this.previousTop = currentTop;
+});
