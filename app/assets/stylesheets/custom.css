@@ -124,3 +124,12 @@ body {
 .nav-logo {
   width:100px;
 }
+
+h3 {
+  color: #fff;
+  font-family: Trebuchet MS, Helvetica;
+}
+
+.field-text {
+  color: #cecece;
+}

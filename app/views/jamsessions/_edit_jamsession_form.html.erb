@@ -7,52 +7,52 @@
 <%= form_for @jamsession do |f| %>
 
   <div>
-    <%= f.label :title %>
+    <%= f.label :title, class: "field-text" %>
     <%= f.text_field :title %>
   </div>
 
   <div>
-    <%= f.label :description %>
+    <%= f.label :description, class: "field-text" %>
     <%= f.text_area :description %>
   </div>
 
   <div>
-    <%= f.label :present_instrument %>
+    <%= f.label :present_instrument, class: "field-text" %>
     <%= f.text_field :present_instrument %>
   </div>
 
   <div>
-    <%= f.label :desired_instruments %>
+    <%= f.label :desired_instruments, class: "field-text" %>
     <%= f.text_field :desired_instruments %>
   </div>
 
   <div>
-    <%= f.label :address %>
+    <%= f.label :address, class: "field-text" %>
     <%= f.text_field :address %>
   </div>
 
   <div>
-    <%= f.label :city %>
+    <%= f.label :city, class: "field-text" %>
     <%= f.text_field :city %>
   </div>
 
   <div>
-    <%= f.label :state %>
+    <%= f.label :state, class: "field-text" %>
     <%= f.text_field :state %>
   </div>
 
   <div>
-    <%= f.label :zip_code, 'Zip Code' %>
+    <%= f.label :zip_code, 'Zip Code', class: "field-text" %>
     <%= f.text_field :zip_code %>
   </div>
 
   <div>
-    <%= f.label :date %>
+    <%= f.label :date, class: "field-text" %>
     <%= f.datetime_select :date, ampm: true, start_year: Date.today.year %>
   </div>
 
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "postfix button expand" %>
   </p>
 
 <% end %>
