@@ -1,25 +1,11 @@
 <div class="row">
-  <form>
-    <div class="row collapse">
+  <div class="large-6 columns">
 
-      <div class="large-10 small-8 columns">
-        <%= form_tag jamsessions_path, method: :get do %>
-        <%= text_field_tag :query, params[:query] %>
-      </div>
-      <div class="large-2 small-3 columns">
-        <%if current_user %>
-        <%= submit_tag "Search", class: "postfix button expand", id: "homepage-search-button-sign-in", name: nil %>
-        <% else %>
-        <%= submit_tag "Search", class: "postfix button expand", id: "homepage-search-button", name: nil %>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
-  </form>3
+    <% @jamsessions.each do |jam| %>
+      <p class="j-index-title"><%= link_to jam.title, jamsession_path(jam) %></p>
+      <p class="j-index-loc"><%= jam.city %>, <%= jam.state %></p>
+      <hr class="j-index-spacer">
+    <% end %>
+
 </div>
-
-
-<% @jamsessions.each do |jam| %>
-  <p><%= link_to jam.title, jamsession_path(jam) %></p>
-  <p><%= jam.address %></p>
-<% end %>
+</div>

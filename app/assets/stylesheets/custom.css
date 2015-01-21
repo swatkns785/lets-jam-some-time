@@ -133,3 +133,22 @@ h3 {
 .field-text {
   color: #cecece;
 }
+
+.j-index-title a{
+  font-size: 2em;
+  color: #fff;
+}
+
+.j-index-title a:hover{
+  color: gray;
+}
+
+.j-index-loc {
+  font-size: 14px;
+  color: #cecece;
+  line-height: 2px;
+}
+
+.j-index-spacer hr {
+  color:black;
+}
