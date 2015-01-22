@@ -19,14 +19,14 @@
     <% end %>
   </div>
   <div class="large-12 columns">
-    <% if @jamsession.user_id == current_user.id %>
+    <% if @jamsession.user == current_user %>
       <p><%= link_to "Edit this Jam Session", edit_jamsession_path(@jamsession) %></p>
       <p><%= link_to "Delete this Jam Session", jamsession_path(@jamsession), method: :delete %></p>
     <% end %>
 
-    <% if current_user.id != @jamsession.user_id %>
+    <% if current_user != @jamsession.user %>
       <% if @approved_attendee %>
-        <p><%= link_to "Leave this Jam Session", jamsession_attendee_path(@jamsession, @approved_attendee.user_id), method: :delete %></p>
+        <p><%= link_to "Leave this Jam Session", jamsession_attendee_path(@jamsession, @approved_attendee), method: :delete %></p>
       <% else %>
         <p><%= link_to "Join this Jam Session", jamsession_attendees_path(@jamsession, @attendee), method: :post %></p>
       <% end %>
@@ -42,7 +42,7 @@
       <% end %>
     <% end %>
 
-    <% if current_user.id == @jamsession.user_id %>
+    <% if current_user == @jamsession.user %>
       <h3>Pending Requests</h3>
       <% @pending_attendees.each do |pt| %>
         <p><%= link_to pt.user.nickname, user_path(pt.user.id) %></p>
