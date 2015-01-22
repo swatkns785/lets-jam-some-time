@@ -152,3 +152,11 @@ h3 {
 .j-index-spacer hr {
   color:black;
 }
+
+#j-index-page-buffer-top {
+  margin-top: 65px;
+}
+
+#show-page-buffer-top {
+  margin-top:50px;
+}
