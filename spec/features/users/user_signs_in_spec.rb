@@ -26,7 +26,7 @@ feature "a user signs in", %q(
       },
       "extra" => {
         "raw_info" => {
-          "permalink" => "http://soundcloud.com/bunkmoreland"
+          "permalink_url" => "http://soundcloud.com/bunkmoreland"
         }
       }
     }
