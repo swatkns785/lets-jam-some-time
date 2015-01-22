@@ -33,18 +33,52 @@ January 15, 2015
 
 *Implemented functionality for a jam session attendee to upload to their personal soundcloud account via this app.
 
--Technical difficulties
+*Technical difficulties
 
-  -Establishing connection to Soundcloud API proved difficult
+  *Establishing connection to Soundcloud API proved difficult
 
-  -Determing how to format the POST request to the API
+  *Determing how to format the POST request to the API
 
-  -Determining success in test environment without valid Souncloud API token
+  *Determining success in test environment without valid Souncloud API token
+
 
 January 16, 2015
 
--Styled the home page and refactored some extraneous code.
+*Styled the home page and refactored some extraneous code.
+
 
 January 17, 2015
 
--Installed Geokit gem to retrieve latitude and longitude for faster search functionality. Currently having issues where I create a jam session, the post request enters an infinite loop and I run out allocated queries for a given time period.
+*Installed Geokit gem to retrieve latitude and longitude for faster search functionality. Currently having issues where I create a jam session, the post request enters an infinite loop and I run out allocated queries for a given time period.
+
+
+January 18, 2015
+
+*Worked on Geokit-Rails configuration
+
+
+January 19, 2015
+
+*Completed configuring Geokit-Rails gem for storing latitude and longitude of a given location
+
+*Added javascript map API functionality to jam session's show page.
+
+
+January 20, 2015
+
+*Added search functionality for jam sessions by title, description, present instruments, and desired instruments.
+
+*Deployed to Heroku, https://letsjam-launch.herokuapp.com/
+
+January 21, 2015
+
+*Troubleshooted user authentication via Soundcloud. Unable to unauthenticate.
+
+*Worked on styling of home page and forms.
+
+
+January 22, 2015
+
+*Figured out solution to my authentication woes. Soundcloud does not recognize apps that are not configured with https protocol. Changed app configuration for force SSL configuration.
+
+*Changed some homepage styling.
