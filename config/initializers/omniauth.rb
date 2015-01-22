@@ -5,6 +5,7 @@
 # end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
+  Rails.logger.warn "configuring Soundcloud: #{ENV['SOUNDCLOUD_CLIENT_ID']}, #{ENV['SOUNDCLOUD_SECRET']}, #{ENV['SOUNDCLOUD_REDIRECT_URL']}"
   provider "soundcloud",
            ENV['SOUNDCLOUD_CLIENT_ID'],
            ENV['SOUNDCLOUD_SECRET'],

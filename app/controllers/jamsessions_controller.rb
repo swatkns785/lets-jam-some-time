@@ -8,6 +8,7 @@ class JamsessionsController < ApplicationController
       @jamsessions = Jamsession.all
     end
     @jamsessions = @jamsessions.order('created_at DESC')
+    @coordinates = Jamsession.index_locations(@jamsessions)
   end
 
   def show
