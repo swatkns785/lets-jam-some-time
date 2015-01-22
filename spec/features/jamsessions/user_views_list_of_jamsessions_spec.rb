@@ -30,11 +30,11 @@ feature "user views list of jam sessions", %q(
     jam3_page_location = page.body.index(jam3.title)
 
     expect(page).to have_link jam1.title
-    expect(page).to have_content jam1.address
+    expect(page).to have_content jam1.city
     expect(page).to have_link jam2.title
-    expect(page).to have_content jam2.address
+    expect(page).to have_content jam2.city
     expect(page).to have_link jam3.title
-    expect(page).to have_content jam3.address
+    expect(page).to have_content jam3.city
 
     expect(jam2_page_location).to be < jam1_page_location
     expect(jam3_page_location).to be < jam2_page_location

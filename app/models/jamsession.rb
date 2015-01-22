@@ -18,6 +18,14 @@ class Jamsession < ActiveRecord::Base
     [[jamsession.latitude, jamsession.longitude]]
   end
 
+  def self.index_locations(jamsessions)
+    index_locations = []
+    jamsessions.each do |jam|
+      index_locations << [jam.latitude, jam.longitude]
+    end
+    index_locations
+  end
+
   def self.search(query)
     where("title ILIKE ? OR description ILIKE ? OR present_instrument ILIKE ? OR desired_instruments ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
   end
