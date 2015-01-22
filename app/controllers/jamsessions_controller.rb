@@ -13,10 +13,10 @@ class JamsessionsController < ApplicationController
 
   def show
     @jamsession = Jamsession.find(params[:id])
-    @approved_attendees = Attendee.where(jamsession_id: params[:id], approval: true)
-    @pending_attendees = Attendee.where(jamsession_id: params[:id], approval: false)
+    @approved_attendees = Attendee.where(jamsession_id: @jamsession, approval: true)
+    @pending_attendees = Attendee.where(jamsession_id: @jamsession, approval: false)
     @attendee = Attendee.new
-    @approved_attendee = Attendee.find_by(user_id: current_user.id, approval: true)
+    @approved_attendee = Attendee.find_by(jamsession_id: @jamsession, approval: true)
     @coordinates = Jamsession.location(@jamsession)
   end
 
