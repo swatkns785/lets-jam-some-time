@@ -150,7 +150,7 @@ h3 {
 }
 
 .j-index-spacer hr {
-  color:black;
+  color: black;
 }
 
 #j-index-page-buffer-top {
@@ -158,11 +158,16 @@ h3 {
 }
 
 #show-page-buffer-top {
-  margin-top:50px;
+  margin-top: 50px;
 }
 
 .alert-box {
   background: transparent;
-  margin-top:50px;
+  margin-top: 50px;
   border: 0px;
+}
+
+.flash-notice {
+  text-align: center;
+  font-size:18px;
 }
