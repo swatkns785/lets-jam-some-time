@@ -160,3 +160,9 @@ h3 {
 #show-page-buffer-top {
   margin-top:50px;
 }
+
+.alert-box {
+  background: transparent;
+  margin-top:50px;
+  border: 0px;
+}
