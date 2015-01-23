@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'auth/failure', to: "sessions#failure"
   get '/logout', to: "sessions#destroy"
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
+
   resources :jamsessions
 
   resources :jamsessions, only: [:show, :create] do
@@ -21,5 +22,5 @@ Rails.application.routes.draw do
   end
 
   resources :tracks
-  
+
 end

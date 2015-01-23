@@ -12,7 +12,7 @@ module AuthenticationHelper
       },
       "extra" => {
         "raw_info" => {
-          "permalink" => user.permalink
+          "permalink_url" => user.permalink
         }
       }
     }
