@@ -29,6 +29,7 @@
       <section class="top-bar-section">
         <ul class="right">
           <li class="has-button">
+              <li><%= link_to "View all Jam Sessions", jamsessions_path %></li>
             <% if current_user %>
               <li>Signed in as <%= current_user.nickname %></li>
               <li><%= link_to "Profile", user_path(current_user.id) %></li>
